@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>admin_login</title>
+    <style>
+      #form {
+        margin: 0 auto;
+        position: relative;
+        top: 250px;
+        width: 500px;
+        height: 300px;
+      }
+
+      label {
+        display: inline-block;
+        width: 100px;
+        height: 34px;
+      }
+
+      input {
+        width: 250px;
+        height: 34px;
+        box-sizing: border-box;
+      }
+
+      button {
+        width: 100px;
+        height: 34px;
+        border-radius: 12px;
+        border-width: 0;
+      }
+
+      #login {
+        margin-left: 100px;
+      }
+
+      #register {
+        margin-left: 20px;
+      }
+
+      #form div + div {
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+  <div id="form">
+    <div>
+      <h1>
+        江苏2018年小客车科目四考试
+      </h1>
+    </div>
+    <form action="servlet/LoginServlet" method="post">
+      <div class="row">
+        <label for="account">账号</label>
+        <input type="text" name="accountName" id="account">
+      </div>
+      <div class="row">
+        <label for="password">密码</label>
+        <input type="password" name="password" id="password">
+      </div>
+
+      <div class="row">
+        <button id="login" type="submit">重置</button> <button id="register"  >登录</button>
+      </div>
+    </form>
+
+    <div id="u11" class="ax_default box_2">
+      <div id="u11_div" class=""></div>
+      <div id="u11_text" class="text ">
+        <p><span style="font-family:'Arial Normal', 'Arial';text-decoration:none;">其然软件 </span><span style="font-family:'PingFangSC-Regular', 'PingFang SC';text-decoration:none;">Copyright © 2018</span></p>
+      </div>
+    </div>
+
+  </div>
+    <script src="resources/scripts/axure/ios.js"></script>
+  </body>
+</html>

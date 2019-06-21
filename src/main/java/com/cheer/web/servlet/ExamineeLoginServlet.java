@@ -18,7 +18,7 @@ public class ExamineeLoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         Examinee examinee = examineeImpl.findExaminee(Integer.parseInt(idNumber));
         if(examinee==null||!password.equals(examinee.getPassword())){
-            response.sendRedirect("../examinee_login.html");
+            response.sendRedirect("../examinee_login1.html");
         }else{
             request.getSession().setAttribute("examinee",examinee);
             response.sendRedirect("../page_examinee_index.jsp");

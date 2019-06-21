@@ -25,7 +25,7 @@
             height: 30px;
         }
     </style>
-</head>
+  </head>
 <body>
 <div id="base" class="">
 
@@ -155,8 +155,9 @@
                                      let $upd="编辑";
                                      $td.append($upd);
                                  }else if("删除"==header[j]){
-                                     let $del="删除";
+                                     let $del="<a href='servlet/DeleteServlet?id="+(i+1)+"'>删除</a>";
                                      $td.append($del);
+
                                  }
                              }
                         }
@@ -165,5 +166,6 @@
             });
         });
     </script>
+
 </body>
 </html>

@@ -1,30 +1,29 @@
 package com.cheer.web.servlet;
 
+import com.cheer.dao.impl.ExamineeMapperImpl;
 import com.cheer.domain.Examinee;
+import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.Map;
+import java.io.PrintWriter;
+import java.util.List;
 
-@WebServlet(name = "TotalServlet1", urlPatterns = "/servlet/TotalServlet1")
-public class TotalServlet1 extends HttpServlet {
+@WebServlet(name = "GetExamineeServlet", urlPatterns = "/servlet/GetExamineeServlet")
+public class GetExamineeServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setCharacterEncoding("UTF-8");
-        String val = request.getParameter("val");
-        String num = request.getParameter("num");
-        HttpSession session = request.getSession();
-        Map map = (Map) session.getAttribute("map");
-        map.put(num,val);
-        session.setAttribute("map",map);
-        System.out.println(map);
-        response.sendRedirect("../exam_end.jsp");
-
-
+        response.setContentType("application/json");
+        PrintWriter writer = response.getWriter();
+        List<Examinee> list = new ExamineeMapperImpl().getExaminee();
+        Gson gson=new Gson();
+        String s = gson.toJson(list);
+        writer.write(s);
+        writer.close();
 
     }
 

@@ -9,12 +9,12 @@ import java.util.Map;
 
 public class QuestionService1 {
     public static void main(String[] args) {
-        new QuestionService1().insertQuestion();
+        new QuestionService1().insertQuestion("d:/题目.xlsx");
     }
-    public void insertQuestion(){
+    public void insertQuestion(String src){
         QuestionMapperImpl qmi=new QuestionMapperImpl();
         WorkBooks workBooks=new WorkBooks();
-        Map<Integer, List<String>> map = workBooks.readBook();
+        Map<Integer, List<String>> map = workBooks.readBook(src);
         List<String> list = map.get(1);
         List<String> titleList=new ArrayList<>();
         List<String> QAList=new ArrayList<>();
@@ -48,7 +48,7 @@ public class QuestionService1 {
         }
 
         for(int i=0;i<6;i++){
-            Question question=new Question(titleList.get(i),QAList.get(i),
+            Question question=new Question(i+1,titleList.get(i),QAList.get(i),
                     QBList.get(i),QCList.get(i),QDList.get(i),answerList.get(i));
             qmi.insertQuestion(question);
         }

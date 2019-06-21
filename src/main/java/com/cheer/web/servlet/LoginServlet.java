@@ -19,9 +19,9 @@ public class LoginServlet extends HttpServlet {
         if("admin".equals(accountName)&&"admin".equals(password)){
             administrator=new Administrator(accountName,password);
             request.getSession().setAttribute("administrator",administrator);
-            response.sendRedirect("../page_admin_index.jsp");
+            response.sendRedirect("../page_admin_index1.jsp");
         }else{
-            request.getRequestDispatcher("admin_login.html");
+            request.getRequestDispatcher("../admin_login1.html").forward(request,response);
         }
     }
 

@@ -2,45 +2,61 @@
 <html>
   <head>
     <title>union_login</title>
+    <style>
 
+      #base{
+        margin-top: 50px;
+        margin-left: 520px;
+      }
+      #u0_text{
+        margin-top: 120px;
+      }
+      /*form+form{
+        margin-top: 50px;
+      }*/
+      form{
+        display: inline-block;
+      }
+      form+form{
+        margin-left: 50px;
+      }
+      #u2_text{
+        margin-top: 100px;
+       margin-left: 95px;
+      }
+      #u1_text{
+        margin-top: 340px;
+        margin-left: 150px;
+      }
+    </style>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   </head>
   <body>
     <div id="base" class="">
 
-      <!-- Unnamed (Rectangle) -->
-      <div id="u0" class="ax_default heading_1">
-        <div id="u0_div" class=""></div>
         <div id="u0_text" class="text ">
-          <p><span style="text-decoration:none;">江苏2018年小客车科目四考试</span></p>
+          <h1>江苏2018年小客车科目四考试</h1>
         </div>
-      </div>
 
 
-      <!-- Unnamed (Rectangle) -->
-      <div id="u2" class="ax_default primary_button">
-        <div id="u2_div" class=""></div>
+
+
         <div id="u2_text" class="text ">
-          <button><a href="">管理员登录</a></button>
+          <form action="admin_login1.html"><button type="submit" class="btn btn-primary btn-lg" >管理员登录</button></form>
+
+          <form action="examinee_login1.html"><button type="submit" class="btn btn-primary btn-lg" >考生登录</button></form>
         </div>
-      </div>
-
-      <!-- Unnamed (Rectangle) -->
-      <div id="u3" class="ax_default primary_button">
-        <div id="u3_div" class=""></div>
-        <div id="u3_text" class="text ">
-          <button><a href="">考生登录</a></button>
-        </div>
-      </div>
 
 
-      <!-- Unnamed (Rectangle) -->
-      <div id="u1" class="ax_default box_2">
-        <div id="u1_div" class=""></div>
+
         <div id="u1_text" class="text ">
           <p><span style="font-family:'Arial Normal', 'Arial';text-decoration:none;">其然软件 </span><span style="font-family:'PingFangSC-Regular', 'PingFang SC';text-decoration:none;">Copyright © 2018</span></p>
         </div>
-      </div>
+
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   </body>
 </html>

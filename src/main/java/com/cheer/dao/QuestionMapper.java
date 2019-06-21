@@ -8,4 +8,6 @@ public interface QuestionMapper {
     public  void insertQuestion(Question question);
 
     public List<Question> getQuestion();
+
+    public void  deleteQuestion(int id);
 }

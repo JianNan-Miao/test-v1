@@ -1,5 +1,7 @@
 package com.cheer.web.servlet;
 
+import com.cheer.dao.impl.QuestionMapperImpl;
+import com.cheer.domain.Question;
 import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
@@ -11,15 +13,20 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @WebServlet(name = "TotalServlet", urlPatterns = "/servlet/TotalServlet")
 public class TotalServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
        response.setCharacterEncoding("UTF-8");
+        QuestionMapperImpl queImpl=new QuestionMapperImpl();
+        List<Question> list = queImpl.getQuestion();
+
         String val = request.getParameter("val");
         String num = request.getParameter("num");
         HttpSession session = request.getSession();
+        session.setAttribute("size",list.size());
         Map map1 = (Map) session.getAttribute("map");
         Map map=null;
         if(map1==null){

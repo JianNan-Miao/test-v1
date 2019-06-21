@@ -5,13 +5,16 @@ public class Examinee {
     private  String username;
     private  String password;
     private  int status;//0:未考 1：已考
-    private  int score;
+    private  double score;
     private  int pass;//0:未过 1：已过
+
+
+
 
     public Examinee() {
     }
 
-    public Examinee(int id, String username, String password, int status, int score, int pass) {
+    public Examinee(int id, String username, String password, int status, double score, int pass) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -52,11 +55,11 @@ public class Examinee {
         this.status = status;
     }
 
-    public int getScore() {
+    public double getScore() {
         return score;
     }
 
-    public void setScore(int score) {
+    public void setScore(double score) {
         this.score = score;
     }
 

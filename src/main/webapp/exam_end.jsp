@@ -94,6 +94,10 @@
                  }
               }
           });
+
+          $("#imports").click(function () {
+              location.href="examinee_login.html";
+          });
       });
   </script>
 

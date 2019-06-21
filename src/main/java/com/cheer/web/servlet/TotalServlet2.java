@@ -1,5 +1,6 @@
 package com.cheer.web.servlet;
 
+import com.cheer.dao.impl.ExamineeMapperImpl;
 import com.cheer.dao.impl.QuestionMapperImpl;
 import com.cheer.domain.Examinee;
 import com.cheer.domain.Information;
@@ -21,7 +22,7 @@ import java.util.Map;
 @WebServlet(name = "TotalServlet2", urlPatterns = "/servlet/TotalServlet2")
 public class TotalServlet2 extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        int pazz=0;
         int correct=0;
         int incorrect=0;
         double score=0.0;
@@ -40,22 +41,33 @@ public class TotalServlet2 extends HttpServlet {
             for(int i=0;i<list.size();i++){
                 String correct_answer = list.get(i).getAnswer();
                 String my_answer = (String) map.get(String.valueOf((i + 1)));
-                if(correct_answer.indexOf(my_answer)!=-1){
-                    correct++;
-                }else{
-                    incorrect++;
+                if (my_answer!=null) {
+                    if(correct_answer.indexOf(my_answer)!=-1){
+                        correct++;
+                    }else{
+                        incorrect++;
+                    }
                 }
             }
             score=100/(list.size())*correct;
-            if(score>=60){
+            if(score>=90){
                 pass="及格";
+                pazz=1;
             }else{
                 pass="不及格";
+                pazz=0;
             }
 
+            //将考生的考试状态，成绩等信息更新到数据库
+            examinee.setStatus(1);
+            examinee.setScore(score);
+            examinee.setPass(pazz);
+            new ExamineeMapperImpl().updateExaminee(examinee);
+
+            //将结果封装成information对象，方便最后考试信息的解析
             Information inf=new Information(id,correct,incorrect,miss_answer,score,pass);
-            /*request.getSession().setAttribute("inf",inf);
-            response.sendRedirect("../exam_end.jsp");*/
+            System.out.println(inf);
+
             Gson gson=new Gson();
             List<Information> list1=new ArrayList<Information>();
             list1.add(inf);

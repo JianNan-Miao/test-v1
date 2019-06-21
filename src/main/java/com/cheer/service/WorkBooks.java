@@ -22,7 +22,8 @@ import static org.apache.xmlbeans.impl.piccolo.xml.Piccolo.STRING;
 public class WorkBooks {
 
     public static void main(String[] args) {
-        Map<Integer, List<String>> map = new WorkBooks().readBook();
+        String src="d:/题目.xlsx";
+        Map<Integer, List<String>> map = new WorkBooks().readBook(src);
         List<String> list = map.get(1);
         for (String s : list) {
             System.out.println(s);
@@ -32,10 +33,10 @@ public class WorkBooks {
     }
 
 
-    public Map<Integer, List<String>> readBook(){
+    public Map<Integer, List<String>> readBook(String src){
         FileInputStream file = null;
         try {
-            file = new FileInputStream(new File("d:/题目.xlsx"));
+            file = new FileInputStream(new File(src));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

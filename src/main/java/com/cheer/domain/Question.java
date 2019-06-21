@@ -1,6 +1,7 @@
 package com.cheer.domain;
 
 public class Question {
+    private  int id;
     private  String title;
     private  String QA;
     private  String QB;
@@ -11,7 +12,8 @@ public class Question {
     public Question() {
     }
 
-    public Question(String title, String QA, String QB, String QC, String QD, String answer) {
+    public Question(int id, String title, String QA, String QB, String QC, String QD, String answer) {
+        this.id = id;
         this.title = title;
         this.QA = QA;
         this.QB = QB;
@@ -71,7 +73,8 @@ public class Question {
     @Override
     public String toString() {
         return "Question{" +
-                "title='" + title + '\'' +
+                "id=" + id +
+                ", title='" + title + '\'' +
                 ", QA='" + QA + '\'' +
                 ", QB='" + QB + '\'' +
                 ", QC='" + QC + '\'' +

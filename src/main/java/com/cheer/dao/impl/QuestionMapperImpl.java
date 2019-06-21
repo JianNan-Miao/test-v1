@@ -17,6 +17,7 @@ public class QuestionMapperImpl {
         questionMapper.insertQuestion(question);*/
         List<Question> list = new QuestionMapperImpl().getQuestion();
         System.out.println(list);
+
     }
 
     public void insertQuestion(Question question){
@@ -30,6 +31,12 @@ public class QuestionMapperImpl {
         List<Question> questionList = sqlSession.getMapper(QuestionMapper.class).getQuestion();
         MybatisUtils.closeSqlSession(sqlSession);
         return questionList;
+    }
+
+    public void deleteQuestion(int id){
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        sqlSession.getMapper(QuestionMapper.class).deleteQuestion(id);
+        MybatisUtils.closeSqlSession(sqlSession);
     }
 
 

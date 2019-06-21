@@ -44,13 +44,21 @@
             margin-left: 20px;
         }
         .question{
-            margin-top: 200px;
-            margin-left: 300px;
+            margin-top: -237px;
+            margin-left: 470px;
             width: 600px;
             height: 100px;
         }
         #numA ,#numB ,#numC ,#numD{
             width: 200px;
+        }
+        #test{
+            margin-left: 930px;
+            margin-top: 50px;
+        }
+        #time{
+            margin-left: 120px;
+            margin-top: 100px;
         }
     </style>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -81,6 +89,7 @@
         </table>
     </div>
 
+    <div id="clear"></div>
 
     <div class="question">
         <label id="title"></label><br>
@@ -89,7 +98,17 @@
         <input type="radio" name="text1" value="C" id="rd3"><label id="numC"></label><br>
         <input type="radio" name="text1" value="D"id="rd4"><label id="numD"></label><br>
     </div>
-    <div id="clear"></div>
+
+
+    <div id="test">
+        <a  href="#">1</a> <a href="#" >2</a> <a href="#">3</a>
+        <a href="#">4</a>  <a  href="#">5</a> <a href="#">6</a>
+    </div>
+
+    <div id="time">
+        <label  style="color: red">剩余时间</label><br>
+        <span class="timespan"></span>
+    </div>
 
     <div class="row">
         <button id="before" type="submit">上一题</button> <button id="next"  >下一题</button>
@@ -106,6 +125,36 @@
         let num=parseInt(num1);
 
         let i=0;
+        let j=0;
+
+        let time=15*60*1000;
+        let timer=setInterval(function(){
+            let minute=parseInt(time/1000/60);
+            let seconds=parseInt(time/1000%60);
+            $(".timespan").html(minute+":"+seconds);
+            time=time-1000;
+            if(time==0){
+                alert("时间到");
+                clearInterval(timer);
+            }
+        },1000);
+
+
+
+          let as= $("#test").find("a");
+          for(let i=0;i<as.length;i++){
+              as[i].onclick=function () {
+                  j=this.innerHTML;
+                  alert(j)
+                  $("#title").text(list[j-1]["title"]);
+                  $("#numA").text(list[j-1]["QA"]);
+                  $("#numB").text(list[j-1]["QB"]);
+                  $("#numC").text(list[j-1]["QC"]);
+                  $("#numD").text(list[j-1]["QD"]);
+                  i=j;
+              }
+          }
+
 
 
         $.ajax({
@@ -128,8 +177,6 @@
                 $("#numD").text(list[i]["QD"]);
 
 
-
-
             }
         });
 
@@ -143,14 +190,16 @@
           $("#numB").text(list[i]["QB"]);
           $("#numC").text(list[i]["QC"]);
           $("#numD").text(list[i]["QD"]);
+
           location.href="servlet/TotalServlet?val="+val+"&num="+i+"";
+
       });
 
 
 
         $("#before").click(function () {
             i=i-1;
-            
+
              $.ajax({
                  url:"servlet/NumServlet",
                  method: "POST",
@@ -180,6 +229,10 @@
 
         $("#submission").click(function () {
             i=i+1;
+            let size=parseInt("${size}");
+            if(i>size){
+                i=size;
+            }
             val= $("input[type='radio']:checked").val();
             location.href="servlet/TotalServlet1?val="+val+"&num="+i+"";
         })

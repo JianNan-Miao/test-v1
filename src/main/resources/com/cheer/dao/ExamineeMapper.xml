@@ -3,8 +3,14 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cheer.dao.ExamineeMapper">
+    <update id="updateExaminee">
+        update examinee set id=#{id},username=#{username},password=#{password},status=#{status},score=#{score},pass=#{pass} where id=#{id}
+    </update>
 
     <select id="findExaminee" resultType="com.cheer.domain.Examinee">
         select * from examinee where id=#{id}
+    </select>
+    <select id="getExaminee" resultType="com.cheer.domain.Examinee">
+        select * from examinee
     </select>
 </mapper>
